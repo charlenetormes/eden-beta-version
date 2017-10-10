@@ -1,4 +1,4 @@
-package subatom.eden_beta.Detector;
+package subatom.eden_beta;
 
 import android.app.Service;
 import android.content.Context;
@@ -14,13 +14,10 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.affectiva.android.affdex.sdk.Frame;
-import com.affectiva.android.affdex.sdk.detector.Detector;
 import com.affectiva.android.affdex.sdk.detector.Face;
 import com.affectiva.android.affdex.sdk.detector.FrameDetector;
-import subatom.eden_beta.*;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package subatom.eden_beta.Detector;
+package subatom.eden_beta;
 
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;

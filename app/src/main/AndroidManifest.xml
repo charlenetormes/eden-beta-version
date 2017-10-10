@@ -20,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".SplashScreen"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,14 +28,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Statistics"
                   android:screenOrientation="portrait"/>
         <activity android:name=".YoutubePlayer"
                   android:screenOrientation="landscape"/>
-        <activity android:name=".SetName"
+        <activity android:name=".NameSetter"
                   android:screenOrientation="portrait"></activity>
         <service
-            android:name="subatom.eden_beta.Detector.DetectorService"
+            android:name="subatom.eden_beta.DetectorService"
             android:label="My Service" >
         </service>
     </application>

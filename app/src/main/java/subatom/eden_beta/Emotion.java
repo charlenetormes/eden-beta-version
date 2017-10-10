@@ -1,4 +1,4 @@
-package subatom.eden_beta.Detector;
+package subatom.eden_beta;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package subatom.eden_beta.Detector;
+package subatom.eden_beta;
 
 import android.Manifest;
 import android.content.Context;
@@ -16,7 +16,6 @@ import android.view.OrientationEventListener;
 import android.view.Surface;
 
 import com.affectiva.android.affdex.sdk.Frame;
-import subatom.eden_beta.*;
 
 import java.io.IOException;
 import java.util.List;

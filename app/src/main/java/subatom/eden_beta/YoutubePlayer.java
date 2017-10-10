@@ -2,18 +2,11 @@ package subatom.eden_beta;
 
 import android.Manifest;
 import android.app.ActivityManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.affectiva.android.affdex.sdk.Frame;
@@ -30,9 +23,6 @@ import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import subatom.eden_beta.Detector.*;
 
 
 public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, Detector.ImageListener, CameraDetector.CameraEventListener {
@@ -48,12 +38,13 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube_player);
-
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Toast.makeText(this, "HOY GAGO", Toast.LENGTH_SHORT);
+        //this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         VIDEO_ID = getIntent().getStringExtra("url");
-        YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
+        YouTubePlayerView youTubePlayerView = (YouTubePlayerView)findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
+
     }
 
 
@@ -103,8 +94,8 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         if (!wasRestored) {
             player.cueVideo(VIDEO_ID);
         }
-        //canDetect = true;
-        //startService(new Intent(this, FaceDetector.class));
+        Emotion.detect = true;
+        //startService(new Intent(this, DetectorService.class));
     }
 
     private PlaybackEventListener playbackEventListener = new PlaybackEventListener() {
@@ -123,7 +114,7 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         @Override
         public void onPlaying() {
             //resume timer, resume detector
-            //Toast.makeText(YoutubePlayer.this, "PLAY LIKE A PLAYBOY", Toast.LENGTH_SHORT).show();
+            Toast.makeText(YoutubePlayer.this, "PLAY LIKE A PLAYBOY", Toast.LENGTH_SHORT).show();
             Emotion.detect = true;
 
 
@@ -141,7 +132,7 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
     private PlayerStateChangeListener playerStateChangeListener = new PlayerStateChangeListener() {
         @Override
         public void onAdStarted() {
-            //Toast.makeText(YoutubePlayer.this, "FUCKING ADS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(YoutubePlayer.this, "FUCKING ADS", Toast.LENGTH_SHORT).show();
             Emotion.detect = false;
         }
         @Override
@@ -158,7 +149,7 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         }
         @Override
         public void onLoading() {
-            //Toast.makeText(YoutubePlayer.this, "LOADING LIKE YOUR MOM'S MOUTH RIGHT NOW", Toast.LENGTH_SHORT).show();
+            Toast.makeText(YoutubePlayer.this, "LOADING LIKE YOUR MOM'S MOUTH RIGHT NOW", Toast.LENGTH_SHORT).show();
             Emotion.detect = false;
         }
         @Override
@@ -173,12 +164,11 @@ public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         }
         @Override
         public void onVideoStarted() {
-            // start emotion detector
+            //start emotion detector
 
 //            if (!CameraHelper.checkPermission(getApplicationContext()) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //                ActivityCompat.requestPermissions(YoutubePlayer.this, CAMERA_PERMISSIONS_REQUEST, CAMERA_PERMISSIONS_REQUEST_CODE);
-//            }
-
+//
             if (!CameraHelper.checkPermission(YoutubePlayer.this)) {
                 requestPermissions(CAMERA_PERMISSIONS_REQUEST, CAMERA_PERMISSIONS_REQUEST_CODE);
             } else {

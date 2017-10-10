@@ -16,14 +16,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-
-
-
-
 public class MainActivity extends AppCompatActivity {
     Button btnplay;
     TextView txtMainName;
-    String vid_id  ;
+    String vid_id;
     EditText txtUrl;
     Button btnPreview;
 
@@ -33,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public String video_url;
 
     Uri uri;
-    String videoID;
+    String videoID = "czgOWmtGVGs";
     String url;
     ImageView img;
 
